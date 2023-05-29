@@ -1,6 +1,6 @@
 import restObj from "../utils/mockData";
 import Card from "./Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
   const [newList, setNewList] = useState(restObj);
@@ -37,20 +37,29 @@ const Body = () => {
             placeholder="Find a Spot"
             value={search}
             onChange={(text) => setSearch(text.target.value)}
+            onClick={() => setNewList(restObj)}
           />
           <button
             className="btn"
             onClick={() => {
               let filterData = newList.filter((e) =>
-                e.info.name.toLowerCase().includes(search)
+                e.info.name.toLowerCase().includes(search.toLowerCase())
               );
               setNewList(filterData);
             }}
           >
             Search
           </button>
+          <button className="btn"
+            onClick={() => {
+              setNewList(restObj)
+            }}
+          >
+            Reset
+          </button>
         </div>
       </div>
+
       <div className="container">
         {newList.map((rest) => (
           <Card key={rest.info.id} restData={rest} />
