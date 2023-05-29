@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+body {
+  margin: 40px;
+  font-family: Roboto;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  margin: 40px;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.NavWrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 200px;
+  align-items: center;
+  width: 100vw;
+  background-color: #676e6e;
+}
+
+.CompanyLogo {
+  width: 60px;
+  padding: 10px;
+}
+
+.NavItems ul {
+  display: flex;
+}
+
+.NavItems ul li {
+  display: flex;
+  margin-left: 50px;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+}
+
+.NavItems ul li:hover {
+  color: #000;
+}
+
+.btn {
+  padding: 5px 20px;
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: #0d0d0d;
+  color: #fff;
+  font-weight: 400;
+}
+
+.btn:hover {
+  background: #7d53cc;
+}
+
+.filter-btns {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+#searchBar {
+  border: 1px solid #000;
+  height: 35px;
+  margin: 10px;
+  padding-left: 5px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding: 0px 40px 0px 40px;
+  border-bottom: 1px solid #000;
+}
