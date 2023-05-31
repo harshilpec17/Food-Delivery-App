@@ -1,10 +1,46 @@
 import restObj from "../utils/mockData";
 import Card from "./Card";
 import { useState, useEffect } from "react";
+import Shimmer from "./ShimmerComponent/ShimmerBody";
+import ShimmerHeader from "./ShimmerComponent/ShimmerHeader";
 
 const Body = () => {
-  const [newList, setNewList] = useState(restObj);
+  const [newList, setNewList] = useState([]);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/mapi/homepage/getCards?lat=19.0759837&lng=72.8776559"
+    );
+
+    const json = await data.json();
+
+    setNewList(
+      json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants || {}
+    );
+  };
+
+  if (newList.length === 0) {
+    return (
+      <>
+        <ShimmerHeader />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+        <Shimmer />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="wrapper">
@@ -37,7 +73,7 @@ const Body = () => {
             placeholder="Find a Spot"
             value={search}
             onChange={(text) => setSearch(text.target.value)}
-            onClick={() => setNewList(restObj)}
+            onClick={() => setNewList()}
           />
           <button
             className="btn"
@@ -50,9 +86,10 @@ const Body = () => {
           >
             Search
           </button>
-          <button className="btn"
+          <button
+            className="btn"
             onClick={() => {
-              setNewList(restObj)
+              setNewList(restObj);
             }}
           >
             Reset
