@@ -19,24 +19,28 @@ const Body = () => {
 
     const json = await data.json();
 
+    console.log(json);
+
     setNewList(
       json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants || {}
+        ?.restaurants || restObj
     );
   };
 
   if (newList.length === 0) {
     return (
       <>
-        <ShimmerHeader />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
+        <div className="shimmerContainer">
+          <ShimmerHeader />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+        </div>
       </>
     );
   }
