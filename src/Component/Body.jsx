@@ -7,6 +7,7 @@ import ShimmerHeader from "./ShimmerComponent/ShimmerHeader";
 const Body = () => {
   const [newList, setNewList] = useState([]);
   const [search, setSearch] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -19,6 +20,10 @@ const Body = () => {
 
     const json = await data.json();
     setNewList(
+      json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants || restObj
+    );
+    setFilteredData(
       json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants || restObj
     );
@@ -44,7 +49,7 @@ const Body = () => {
             className="btn"
             onClick={() => {
               const topRated = newList.filter((x) => x.info.avgRating > 4);
-              setNewList(topRated);
+              setFilteredData(topRated);
             }}
           >
             Top Rated Restaurants
@@ -55,7 +60,7 @@ const Body = () => {
               const fastDelivery = newList.filter(
                 (x) => x.info.sla.deliveryTime < 28
               );
-              setNewList(fastDelivery);
+              setFilteredData(fastDelivery);
             }}
           >
             Faster Delivery
@@ -68,7 +73,8 @@ const Body = () => {
             placeholder="Find a Spot"
             value={search}
             onChange={(text) => setSearch(text.target.value)}
-            onClick={() => fetchData()}
+
+            // onClick={() => fetchData()}
           />
           <button
             className="btn"
@@ -76,7 +82,12 @@ const Body = () => {
               let filterData = newList.filter((e) =>
                 e.info.name.toLowerCase().includes(search.toLowerCase())
               );
-              setNewList(filterData);
+              setFilteredData(filterData);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "enter") {
+                console.log("enter pressed");
+              }
             }}
           >
             Search
@@ -93,7 +104,7 @@ const Body = () => {
       </div>
 
       <div className="container">
-        {newList.map((rest) => (
+        {filteredData.map((rest) => (
           <Card key={rest.info.id} restData={rest} />
         ))}
       </div>
