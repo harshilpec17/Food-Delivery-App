@@ -18,34 +18,25 @@ const Body = () => {
     );
 
     const json = await data.json();
-
-    console.log(json);
-
     setNewList(
       json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants || restObj
     );
   };
 
-  if (newList.length === 0) {
-    return (
-      <>
-        <div className="shimmerContainer">
-          <ShimmerHeader />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-          <Shimmer />
-        </div>
-      </>
-    );
-  }
-
-  return (
+  return newList.length === 0 ? (
+    <div className="shimmerContainer">
+      <ShimmerHeader />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+      <Shimmer />
+    </div>
+  ) : (
     <>
       <div className="wrapper">
         <div className="filter-btns">
@@ -77,7 +68,7 @@ const Body = () => {
             placeholder="Find a Spot"
             value={search}
             onChange={(text) => setSearch(text.target.value)}
-            onClick={() => setNewList()}
+            onClick={() => fetchData()}
           />
           <button
             className="btn"
@@ -93,7 +84,7 @@ const Body = () => {
           <button
             className="btn"
             onClick={() => {
-              setNewList(restObj);
+              fetchData();
             }}
           >
             Reset
