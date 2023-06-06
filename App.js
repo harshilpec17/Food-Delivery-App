@@ -4,14 +4,15 @@ import Header from "./src/Component/Header";
 import Body from "./src/Component/Body";
 import AboutUs from "./src/Component/AboutUs";
 import ContactUs from "./src/Component/ContactUs";
+import Error from "./src/Component/Error";
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -20,14 +21,21 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-  },
-  {
-    path: "about",
-    element: <AboutUs />,
-  },
-  {
-    path: "contact",
-    element: <ContactUs />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "about",
+        element: <AboutUs />,
+      },
+      {
+        path: "contact",
+        element: <ContactUs />,
+      },
+    ],
+    errorElement: <Error />,
   },
 ]);
 
