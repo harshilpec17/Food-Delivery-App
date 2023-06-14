@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerComponent/ShimmerBody";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
-import resMenu from "../utils/mockMenu";
-import resName from "../utils/mockName";
+
 import fakeJson from "./fakeData";
 
 const menu = () => {
