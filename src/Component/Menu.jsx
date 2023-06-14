@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerComponent/ShimmerBody";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
+import resMenu from "../utils/mockMenu";
+import resName from "../utils/mockName";
+import fakeJson from "./fakeData";
 
 const menu = () => {
   const [resInfo, setResInfo] = useState(null);
 
   const { id } = useParams();
-
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -17,7 +19,8 @@ const menu = () => {
 
     const json = await data.json();
     console.log(json);
-    setResInfo(json.data);
+    console.log(fakeJson);
+    setResInfo(json.data) || setResInfo(fakeJson.data);
   };
 
   if (resInfo === null) return <Shimmer />;
@@ -26,9 +29,9 @@ const menu = () => {
     resInfo?.cards[0]?.card?.card?.info;
 
   const { itemCards } =
+    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      ?.card ||
     resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-
-  console.log(itemCards);
 
   return (
     <div className=" text-white content-center bg-gray-600">

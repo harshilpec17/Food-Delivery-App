@@ -4,17 +4,19 @@ import Header from "./src/Component/Header";
 import Body from "./src/Component/Body";
 import AboutUs from "./src/Component/AboutUs";
 import ContactUs from "./src/Component/ContactUs";
-import Error from "./src/Component/Error";
+
 import Offers from "./src/Component/Offers";
 import Menu from "./src/Component/Menu";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </>
   );
 };
 
@@ -42,10 +44,9 @@ const appRouter = createBrowserRouter([
       {
         path: "/menu/:id",
         element: <Menu />,
-        errorElement: <Error />,
       },
     ],
-    errorElement: <Error />,
+    // errorElement: <Error />,
   },
 ]);
 
