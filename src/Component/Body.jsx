@@ -30,7 +30,7 @@ const Body = () => {
         ?.restaurants || restObj
     );
   };
-
+  console.log(newList);
   return newList.length === 0 ? (
     <div className="shimmerContainer">
       <ShimmerHeader />
@@ -66,6 +66,15 @@ const Body = () => {
             }}
           >
             Faster Delivery
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              const lowtoHigh = newList.filter((x) => x.info.costForTwo > 200);
+              setFilteredData(lowtoHigh);
+            }}
+          >
+            Cost: Low to High
           </button>
         </div>
         <div className="searchBar">
