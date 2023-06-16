@@ -19,7 +19,7 @@ const menu = () => {
     const json = await data.json();
     console.log(json);
     console.log(fakeJson);
-    setResInfo(json.data) || setResInfo(fakeJson.data);
+    setResInfo(json.data);
   };
 
   if (resInfo === null) return <Shimmer />;

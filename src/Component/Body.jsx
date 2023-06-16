@@ -50,8 +50,13 @@ const Body = () => {
           <button
             className="btn"
             onClick={() => {
-              const topRated = newList.filter((x) => x.info.avgRating > 4);
-              setFilteredData(topRated);
+              const topRatedSort = newList.sort(
+                (a, b) => b.info.avgRating - a.info.avgRating
+              );
+              const topRatedFilter = topRatedSort.filter(
+                (x) => x.info.avgRating
+              );
+              setFilteredData(topRatedFilter);
             }}
           >
             Top Rated Restaurants
@@ -59,10 +64,13 @@ const Body = () => {
           <button
             className="btn fasterDelivery"
             onClick={() => {
-              const fastDelivery = newList.filter(
-                (x) => x.info.sla.deliveryTime < 28
+              const deliverySort = newList.sort(
+                (a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime
               );
-              setFilteredData(fastDelivery);
+              const deliveryFilter = deliverySort.filter(
+                (x) => x.info.sla.deliveryTime
+              );
+              setFilteredData(deliveryFilter);
             }}
           >
             Faster Delivery
@@ -70,11 +78,34 @@ const Body = () => {
           <button
             className="btn"
             onClick={() => {
-              const lowtoHigh = newList.filter((x) => x.info.costForTwo > 200);
-              setFilteredData(lowtoHigh);
+              const lowToHighSort = newList.sort(
+                (a, b) =>
+                  parseInt(a.info.costForTwo.match(/\d+/)) -
+                  parseInt(b.info.costForTwo.match(/\d+/))
+              );
+              const lowToHighFilter = lowToHighSort.filter(
+                (x) => x.info.costForTwo
+              );
+              setFilteredData(lowToHighFilter);
             }}
           >
             Cost: Low to High
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              const highToLowSort = newList.sort(
+                (a, b) =>
+                  parseInt(b.info.costForTwo.match(/\d+/)) -
+                  parseInt(a.info.costForTwo.match(/\d+/))
+              );
+              const highToLowFilter = highToLowSort.filter(
+                (x) => x.info.costForTwo
+              );
+              setFilteredData(highToLowFilter);
+            }}
+          >
+            Cost: High to low
           </button>
         </div>
         <div className="searchBar">
