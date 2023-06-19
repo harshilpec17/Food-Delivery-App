@@ -73,6 +73,11 @@ const menu = () => {
         <p className="md:text-[16px]">{costForTwoMessage}</p>
       </div>
       <div className="discount px-6 md:px-16 py-4 w-max">
+        {console.log(
+          resInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.map(
+            (dis) => <h1> {dis.offers.info}</h1>
+          )
+        )}
         <div className="discount px-4 py-2 card flex flex-col border rounded">
           <div>
             <h2 className="text-center">Header</h2>
