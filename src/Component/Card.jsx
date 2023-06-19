@@ -21,13 +21,13 @@ const Card = ({ restData }) => {
             {cuisines ? cuisines.join(", ") : " "}
           </p>
           <div className="mt-4">
-            <span className="mb-2 mr-2 inline-block rounded-full bg-[#48C479]  text-[12px] px-3 py-1 text-[10px] font-bold text-gray-900">
+            <span className="mb-2 mr-2 inline-block rounded-full bg-[#48C479]  text-[12px] px-3 py-1  font-bold text-gray-900">
               {avgRating} +
             </span>
-            <span className="mb-2 mr-2 inline-block rounded-full bg-[#DB7C38] text-[12px] px-3 py-1 text-[10px] font-semibold text-gray-900">
+            <span className="mb-2 mr-2 inline-block rounded-full bg-[#DB7C38] text-[12px] px-3 py-1 font-semibold text-gray-900">
               {deliveryTime} MINS
             </span>
-            <span className="mb-2 mr-2 inline-block rounded-full bg-[#8A584B] text-[12px] px-3 py-1 text-[10px] font-semibold text-gray-900">
+            <span className="mb-2 mr-2 inline-block rounded-full bg-[#8A584B] text-[12px] px-3 py-1 font-semibold text-gray-900">
               {costForTwo}
             </span>
           </div>

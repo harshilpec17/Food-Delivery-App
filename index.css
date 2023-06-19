@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 body {
   margin: 40px;
@@ -94,4 +94,17 @@ body {
   width: 100vw;
   padding: 0px 40px 0px 40px;
   border-bottom: 1px solid #000;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  gap: 350px;
+  width: 100vw;
+  overflow: scroll;
+  padding-left: 30px;
+}
+
+.banner::-webkit-scrollbar {
+  display: none;
 }

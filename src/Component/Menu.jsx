@@ -2,24 +2,22 @@ import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerComponent/ShimmerBody";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
+import resName from "../utils/mockName";
 
 import fakeJson from "./fakeData";
 
 const menu = () => {
   const [resInfo, setResInfo] = useState(null);
 
-  const { id } = useParams();
+  const { id } = useParams("112620245");
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
     const data = await fetch(RES_MENU + id);
-
     const json = await data.json();
-    console.log(json);
-    console.log(fakeJson);
-    setResInfo(json.data);
+    setResInfo(json.data || fakeJson.data);
   };
 
   if (resInfo === null) return <Shimmer />;
@@ -30,7 +28,9 @@ const menu = () => {
   const { itemCards } =
     resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card ||
-    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      ?.card ||
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
   return (
     <div className=" text-white content-center bg-gray-600">

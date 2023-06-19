@@ -186,7 +186,11 @@ const fakeJson = {
       {
         card: {},
       },
-      {},
+      {
+        card: {
+          name: "harshil",
+        },
+      },
       {
         groupedCard: {
           cardGroupMap: {

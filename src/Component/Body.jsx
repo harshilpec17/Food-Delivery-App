@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerComponent/ShimmerBody";
 import ShimmerHeader from "./ShimmerComponent/ShimmerHeader";
 import { Link } from "react-router-dom";
-
+import Recommended from "./Recommended";
+import mockPicks from "../utils/mockPicks";
 const Body = () => {
   const [newList, setNewList] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [banner] = useState(mockPicks);
 
   useEffect(() => {
     fetchData();
@@ -22,12 +24,18 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setNewList(
-      json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants || restObj
+      json?.data?.success.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        restObj
     );
     setFilteredData(
-      json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants || restObj
+      json?.data?.success.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        json?.data?.success.cards[5]?.gridWidget?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        restObj
     );
   };
   console.log(newList);
@@ -146,6 +154,11 @@ const Body = () => {
       </div>
 
       <div className="container">
+        <div className="banner">
+          {banner.bannerCarousel.cards.map((item) => (
+            <Recommended key={item.id} top={item} />
+          ))}
+        </div>
         {filteredData.map((rest) => (
           <Link key={rest.info.id} to={"/menu/" + rest.info.id}>
             <Card restData={rest} />
