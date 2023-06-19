@@ -6,6 +6,7 @@
 body {
   font-family: Roboto;
   overflow-x: hidden;
+  margin: 60px;
 }
 
 .container {
@@ -18,9 +19,9 @@ body {
 
 .banner {
   display: flex;
-  gap: 350px;
+  gap: 300px;
   width: 100vw;
-  margin-left: 60px;
+  padding: 0px 60px 0px 60px;
   overflow: scroll;
 }
 
@@ -39,6 +40,7 @@ body {
 .NavWrapper {
   display: flex;
   justify-content: space-around;
+  padding: 0px 30px 0px 30px;
   gap: 200px;
   align-items: center;
   width: 100vw;
@@ -103,6 +105,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  padding: 0px 40px 0px 40px;
+  padding: 0px 50px 0px 40px;
   border-bottom: 1px solid #000;
 }

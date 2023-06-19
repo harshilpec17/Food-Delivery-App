@@ -3,7 +3,7 @@ import React from "react";
 const topPicks = ({ top }) => {
   return (
     <div className="flex-col mx-auto grid w-full items-center py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-      <div className="relative aspect-[16/9] h-[320px] w-[400px] rounded-md md:aspect-auto md:h-auto">
+      <div className="relative aspect-[16/9] h-[300px] w-[360px] rounded-md md:aspect-auto md:h-auto">
         <img
           src={
             "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_624,h_320/" +

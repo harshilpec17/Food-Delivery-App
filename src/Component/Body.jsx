@@ -53,6 +53,11 @@ const Body = () => {
     </div>
   ) : (
     <>
+      <div className="banner">
+        {banner.bannerCarousel.cards.map((item) => (
+          <Recommended key={item.id} top={item} />
+        ))}
+      </div>
       <div className="wrapper">
         <div className="filter-btns">
           <button
@@ -151,11 +156,6 @@ const Body = () => {
             Reset
           </button>
         </div>
-      </div>
-      <div className="banner">
-        {banner.bannerCarousel.cards.map((item) => (
-          <Recommended key={item.id} top={item} />
-        ))}
       </div>
 
       <div className="container">
