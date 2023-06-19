@@ -152,13 +152,13 @@ const Body = () => {
           </button>
         </div>
       </div>
+      <div className="banner">
+        {banner.bannerCarousel.cards.map((item) => (
+          <Recommended key={item.id} top={item} />
+        ))}
+      </div>
 
       <div className="container">
-        <div className="banner">
-          {banner.bannerCarousel.cards.map((item) => (
-            <Recommended key={item.id} top={item} />
-          ))}
-        </div>
         {filteredData.map((rest) => (
           <Link key={rest.info.id} to={"/menu/" + rest.info.id}>
             <Card restData={rest} />
