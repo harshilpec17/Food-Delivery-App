@@ -9,6 +9,7 @@ import fakeJson from "./fakeData";
 
 const menu = () => {
   const [resInfo, setResInfo] = useState(null);
+  const [discount] = useState(null);
 
   const { id } = useParams("112620245");
   useEffect(() => {
@@ -20,6 +21,7 @@ const menu = () => {
     const json = await data.json();
     console.log(json);
     setResInfo(json.data || fakeJson.data);
+    setDiscount(json.data);
   };
 
   if (resInfo === null) return <Shimmer />;
@@ -73,14 +75,13 @@ const menu = () => {
         <p className="md:text-[16px]">{costForTwoMessage}</p>
       </div>
       <div className="discount px-6 md:px-16 py-4 w-max">
-        {console.log(
-          resInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.map(
-            (dis) => <h1> {dis.offers.info}</h1>
-          )
+        {discount?.cards[1]?.card?.card?.gridElements?.infoWithStyle.offers.map(
+          (x) => (props = { x })
         )}
+
         <div className="discount px-4 py-2 card flex flex-col border rounded">
           <div>
-            <h2 className="text-center">Header</h2>
+            <h2 className="text-center">{props.info.header}</h2>
           </div>
           <div className="flex flex-row gap-2">
             <p>code</p>
