@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
 import { FaClock } from "react-icons/fa";
 import { BsFillStarFill } from "react-icons/bs";
+import { BiRupee } from "react-icons/bi";
 
 import fakeJson from "./fakeData";
 
@@ -92,20 +93,45 @@ const menu = () => {
         )}
       </div>
 
-      <div className="menu">
+      <div className="menu px-16 mt-5">
         <h1>
           <span>Recomended ( )</span>
         </h1>
-        <ul>
-          {itemCards.map((item) => (
-            <li key={item.card.info.id}>
-              {item.card.info.name} -
-              {`$ ${
-                item.card.info.price / 100 || item.card.info.defaultPrice / 100
-              }`}
-            </li>
-          ))}
-        </ul>
+
+        {itemCards.map((item) => (
+          <div
+            key={item.card.info.id}
+            className="menuContainer flex justify-between border-b py-4"
+          >
+            <div className="menuDescription">
+              <h1 className="text-bold text-[24px]">{item.card.info.name}</h1>
+              <p className="text-[16px] flex items-center">
+                <BiRupee />
+                {`${
+                  item.card.info.price / 100 ||
+                  item.card.info.defaultPrice / 100
+                }`}
+              </p>
+              <p className="text-[10px]">{item.card.info.description}</p>
+            </div>
+            <div className="menuImage border rounded w-[118px]">
+              <img
+                src={
+                  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                  item.card.info.imageId
+                }
+                alt="menu image"
+              />
+            </div>
+            {/* <li key={item.card.info.id}>
+                {item.card.info.name} -
+                {`$ ${
+                  item.card.info.price / 100 ||
+                  item.card.info.defaultPrice / 100
+                }`}
+              </li> */}
+          </div>
+        ))}
       </div>
     </div>
   );
