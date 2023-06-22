@@ -3,14 +3,13 @@ import Shimmer from "./ShimmerComponent/ShimmerBody";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
 import { FaClock } from "react-icons/fa";
-import { BsFillStarFill } from "react-icons/bs";
+import { BsEmojiHeartEyesFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
-
+import { AiFillStar } from "react-icons/ai";
 import fakeJson from "./fakeData";
 
 const menu = () => {
   const [resInfo, setResInfo] = useState(null);
-  const [discount, setDiscount] = useState(null);
 
   const { id } = useParams("112620245");
   useEffect(() => {
@@ -22,7 +21,6 @@ const menu = () => {
     const json = await data.json();
     console.log(json);
     setResInfo(json.data || fakeJson.data);
-    setDiscount(json.data);
   };
 
   if (resInfo === null) return <Shimmer />;
@@ -46,15 +44,15 @@ const menu = () => {
 
   const { itemCards } =
     resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card.hasOwnProperty(
-      "title"
-    ) == true
-      ? resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      "carousel"
+    ) === true
+      ? resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
           ?.card
-      : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
           ?.card;
 
   return (
-    <div className=" text-white content-center bg-gray-600">
+    <div className=" text-[#3E4152] bg-white my-6 md:my-12">
       <div className="basicInformation flex md:flex-row justify-between px-6 md:px-16 py-6 border-b-2 ">
         <div>
           <h1 className="font-bold md:text-[28px] ">{name}</h1>
@@ -63,8 +61,8 @@ const menu = () => {
         </div>
         <div>
           <div className="border-2 rounded text-center p-1">
-            <p className="border-b-2 gap-1 flex justify-center py-1">
-              <BsFillStarFill />
+            <p className="border-b-2 text-[#3D9B6D] gap-1 flex font-semibold justify-center py-1">
+              <AiFillStar />
               {avgRating}
             </p>
             <p className="pt-1">{totalRatingsString}</p>
@@ -78,26 +76,31 @@ const menu = () => {
         <p className="md:text-[16px]">{costForTwoMessage}</p>
       </div>
       <div className="discountWrapper md:px-14 flex flex-col md:flex-row items-left">
-        {discount?.cards[1]?.card?.card?.gridElements?.infoWithStyle.offers.map(
+        {resInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle.offers.map(
           (x) => (
-            <div className="discount px-6 md:px-2 py-3 w-max">
-              <div className="px-4 py-2 card border rounded">
-                <div>
-                  <h2 className="text-center">{x.info.header}</h2>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <p>{x.info.couponCode}</p>
-                  <p> | {x.info.description}</p>
+            <>
+              <div className="discount px-6 md:px-2 py-3 w-max">
+                <div className="px-4 py-2 card border rounded">
+                  <div className="flex align-middle">
+                    <BsEmojiHeartEyesFill />
+                    <h2 className="text-center pl-3 font-extrabold">
+                      {x.info.header}
+                    </h2>
+                  </div>
+                  <div className="flex flex-row gap-2 text-[#93959F] font-semibold">
+                    <p>{x.info.couponCode}</p>
+                    <p> | {x.info.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )
         )}
       </div>
 
       <div className="menu px-2 md:px-16 mt-5">
         <h1>
-          <span>Recommended</span>
+          <span>Recommended ( {itemCards.length} )</span>
         </h1>
         {itemCards.map((item) => (
           <div
@@ -105,8 +108,8 @@ const menu = () => {
             className="menuContainer flex justify-between border-b py-4"
           >
             <div className="menuDescription w-[60%] md:w-[70%]">
-              <h1 className="text-bold text-[24px]">{item.card.info.name}</h1>
-              <p className="text-[16px] flex items-center">
+              <h1 className="font-bold text-[24px]">{item.card.info.name}</h1>
+              <p className="font-semibold text-[16px] flex items-center">
                 <BiRupee />
                 {`${
                   item.card.info.price / 100 ||
@@ -114,7 +117,9 @@ const menu = () => {
                 }`}
               </p>
 
-              <p className="text-[12px]"> {item.card.info.description}</p>
+              <p className="text-[12px] text-[#93959F]">
+                {item.card.info.description}
+              </p>
             </div>
             <div className="menuImage">
               <img
@@ -122,9 +127,14 @@ const menu = () => {
                   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
                   item.card.info.imageId
                 }
-                alt="Not Provided"
+                alt="No Image Required"
                 className="w-[118px] h-[96px] bg-cover bg-center border rounded"
               />
+              <div className="w-[118px] px-2 border rounded cursor-pointer">
+                <h1 className="text-bold text-center text-[#3D9B6D] font-semibold">
+                  ADD +
+                </h1>
+              </div>
             </div>
           </div>
         ))}

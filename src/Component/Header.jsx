@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <>
       <div>
-        <div className="NavWrapper flex flex-row justify-between items-center px-2 md:px-10 py-2 ">
+        <div className="NavWrapper flex flex-row justify-between items-center px-2 md:px-10 py-2 shadow-[0_15px_12px_-8px_rgba(0,0,0,0.3)] md:shadow-[0_35px_25px_-15px_rgba(0,0,0,0.3)] ">
           <div className="logo ">
             <img
               src={LOGO_URL}
