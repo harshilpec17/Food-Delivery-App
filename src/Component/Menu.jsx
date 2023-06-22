@@ -45,11 +45,13 @@ const menu = () => {
   // for the menu dishes, according to the open time of place, it will display the available dishes
 
   const { itemCards } =
-    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card ||
-    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card ||
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card.hasOwnProperty(
+      "title"
+    ) == true
+      ? resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+          ?.card
+      : resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+          ?.card;
 
   return (
     <div className=" text-white content-center bg-gray-600">
@@ -93,17 +95,16 @@ const menu = () => {
         )}
       </div>
 
-      <div className="menu px-16 mt-5">
+      <div className="menu px-2 md:px-16 mt-5">
         <h1>
-          <span>Recomended ( )</span>
+          <span>Recommended</span>
         </h1>
-
         {itemCards.map((item) => (
           <div
             key={item.card.info.id}
             className="menuContainer flex justify-between border-b py-4"
           >
-            <div className="menuDescription">
+            <div className="menuDescription w-[60%] md:w-[70%]">
               <h1 className="text-bold text-[24px]">{item.card.info.name}</h1>
               <p className="text-[16px] flex items-center">
                 <BiRupee />
@@ -112,24 +113,19 @@ const menu = () => {
                   item.card.info.defaultPrice / 100
                 }`}
               </p>
-              <p className="text-[10px]">{item.card.info.description}</p>
+
+              <p className="text-[12px]"> {item.card.info.description}</p>
             </div>
-            <div className="menuImage border rounded w-[118px]">
+            <div className="menuImage">
               <img
                 src={
                   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
                   item.card.info.imageId
                 }
-                alt="menu image"
+                alt="Not Provided"
+                className="w-[118px] h-[96px] bg-cover bg-center border rounded"
               />
             </div>
-            {/* <li key={item.card.info.id}>
-                {item.card.info.name} -
-                {`$ ${
-                  item.card.info.price / 100 ||
-                  item.card.info.defaultPrice / 100
-                }`}
-              </li> */}
           </div>
         ))}
       </div>
