@@ -7,6 +7,7 @@ import { FaClock } from "react-icons/fa";
 import { BsEmojiHeartEyesFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
+import { ImLocation } from "react-icons/im";
 import fakeJson from "./fakeData";
 
 const menu = () => {
@@ -67,11 +68,14 @@ const menu = () => {
         <div>
           <h1 className="font-bold md:text-[28px] ">{name}</h1>
           <p className="md:text-[16px]">{cuisines.join(", ")}</p>
-          <p className="md:text-[16px]">{locality}</p>
+          <p className="md:text-[16px] flex items-center gap-2">
+            <ImLocation />
+            {locality}
+          </p>
         </div>
         <div>
           <div className="border-2 rounded text-center p-1">
-            <p className="border-b-2 text-[#3D9B6D] gap-1 flex font-semibold justify-center py-1">
+            <p className="border-b-2 text-[#3D9B6D] gap-1 flex item-center font-semibold justify-center py-1">
               <AiFillStar />
               {avgRating}
             </p>
@@ -80,7 +84,7 @@ const menu = () => {
         </div>
       </div>
       <div className="time costForTwo border-b-2 flex justify-between px-6 md:px-16 py-4 gap-20">
-        <p className="md:text-[16px] flex gap-1 items-center">
+        <p className="md:text-[16px] flex gap-2 items-center">
           <FaClock /> {deliveryTime} Mins
         </p>
         <p className="md:text-[16px]">{costForTwoMessage}</p>
@@ -96,7 +100,7 @@ const menu = () => {
             <>
               <div className="discount px-6 md:px-2 py-3 w-max">
                 <div className="px-4 py-2 card border rounded">
-                  <div className="flex align-middle">
+                  <div className="flex items-center text-center">
                     <BsEmojiHeartEyesFill />
                     <h2 className="text-center pl-3 font-extrabold">
                       {x.info.header}
@@ -138,7 +142,7 @@ const menu = () => {
                 {item.card.info.description}
               </p>
             </div>
-            <div className="menuImage">
+            <div className="menuImage cursor-pointer">
               <img
                 src={MENU_FOOD_IMAGE + item.card.info.imageId}
                 alt="No Image Required"
