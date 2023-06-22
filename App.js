@@ -8,6 +8,7 @@ import ContactUs from "./src/Component/ContactUs";
 import Offers from "./src/Component/Offers";
 import Menu from "./src/Component/Menu";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
+import ShimmerMenu from "./src/Component/ShimmerComponent/ShimmerMenu";
 
 const AppLayout = () => {
   return (
@@ -39,7 +40,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "offers",
-        element: <Offers />,
+        element: <ShimmerMenu />,
       },
       {
         path: "/menu/:id",

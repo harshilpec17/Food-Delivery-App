@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Shimmer from "./ShimmerComponent/ShimmerBody";
+import ShimmerMenuPage from "./ShimmerComponent/ShimmerMenu";
+
 import { useParams } from "react-router-dom";
-import { RES_MENU } from "../utils/constant";
+import { MENU_FOOD_IMAGE, RES_MENU } from "../utils/constant";
 import { FaClock } from "react-icons/fa";
 import { BsEmojiHeartEyesFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
@@ -23,9 +24,9 @@ const menu = () => {
     setResInfo(json.data || fakeJson.data);
   };
 
-  if (resInfo === null) return <Shimmer />;
+  if (resInfo === null) return <ShimmerMenuPage />;
 
-  // for the name, cuisines, costForTwoMessage, avgRating, totalRatingsString, locality information for the restaurants
+  // Destructuring for the name, cuisines, costForTwoMessage, avgRating, totalRatingsString, locality information for the restaurants
 
   const {
     name,
@@ -36,11 +37,11 @@ const menu = () => {
     locality,
   } = resInfo?.cards[0]?.card?.card?.info;
 
-  // for the deliveryTime information on the menu
+  // Destructuring for the deliveryTime information on the menu
 
   const { deliveryTime } = resInfo?.cards[0]?.card?.card?.info?.sla;
 
-  // for the menu dishes, according to the open time of place, it will display the available dishes
+  // Destructuring for the menu dishes, according to the open time of place, it will display the available dishes
 
   const { itemCards } =
     resInfo?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card.hasOwnProperty(
@@ -53,6 +54,15 @@ const menu = () => {
 
   return (
     <div className=" text-[#3E4152] bg-white my-6 md:my-12">
+      {/* Restaurant Basic information 
+      Name
+      cuisines
+      locality
+      avgRating
+      delivery time
+      and cost for two people 
+       */}
+
       <div className="basicInformation flex md:flex-row justify-between px-6 md:px-16 py-6 border-b-2 ">
         <div>
           <h1 className="font-bold md:text-[28px] ">{name}</h1>
@@ -75,6 +85,11 @@ const menu = () => {
         </p>
         <p className="md:text-[16px]">{costForTwoMessage}</p>
       </div>
+
+      {/* 
+      It provide the information regarding the Discount available to that particular restaurants
+      */}
+
       <div className="discountWrapper md:px-14 flex flex-col md:flex-row items-left">
         {resInfo?.cards[1]?.card?.card?.gridElements?.infoWithStyle.offers.map(
           (x) => (
@@ -97,6 +112,8 @@ const menu = () => {
           )
         )}
       </div>
+
+      {/* It provide the menu items displayed on the page  */}
 
       <div className="menu px-2 md:px-16 mt-5">
         <h1>
@@ -123,10 +140,7 @@ const menu = () => {
             </div>
             <div className="menuImage">
               <img
-                src={
-                  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                  item.card.info.imageId
-                }
+                src={MENU_FOOD_IMAGE + item.card.info.imageId}
                 alt="No Image Required"
                 className="w-[118px] h-[96px] bg-cover bg-center border rounded"
               />
