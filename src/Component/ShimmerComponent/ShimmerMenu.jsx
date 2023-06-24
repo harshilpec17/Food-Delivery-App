@@ -8,7 +8,7 @@ const shimmerMenuPage = () => {
           <div className="w-[100px]"></div>
         </div>
         <div className="shimmerRight">
-          <div></div>
+          <div className="w-[150px]"></div>
           <div></div>
         </div>
       </div>
