@@ -4,7 +4,7 @@ const shimmerMenuPage = () => {
       <div className="shimmerInfo py-12 px-6 md:px-16 bg-slate-600 w-screen flex ">
         <div className="shimmerLeft  bg-white flex flex-col  ">
           <div className="w-[160px] bg-black inline-block"></div>
-          <div className="w-[100px]"></div>
+          <div className="w-[102px]"></div>
           <div className="w-[100px]"></div>
         </div>
         <div className="shimmerRight">
