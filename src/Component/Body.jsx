@@ -1,8 +1,8 @@
 import restObj from "../utils/mockData";
 import Card from "./Card";
 import { useState, useEffect } from "react";
-import Shimmer from "./ShimmerComponent/ShimmerBody";
-import ShimmerHeader from "./ShimmerComponent/ShimmerHeader";
+import { Shimmer } from "./ShimmerComponent/ShimmerBody";
+import { ShimmerHeader } from "./ShimmerComponent/ShimmerBody";
 import { Link } from "react-router-dom";
 import Recommended from "./Recommended";
 import mockPicks from "../utils/mockPicks";
