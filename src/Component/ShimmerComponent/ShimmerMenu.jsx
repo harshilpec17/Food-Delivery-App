@@ -1,32 +1,50 @@
 const shimmerMenuPage = () => {
   return (
     <>
-      <div className="shimmerInfo py-12 px-6 md:px-16 bg-slate-600 w-screen flex ">
-        <div className="shimmerLeft  bg-white flex flex-col  ">
-          <div className="w-[160px] bg-black inline-block"></div>
-          <div className="w-[102px]"></div>
-          <div className="w-[100px]"></div>
-        </div>
-        <div className="shimmerRight">
-          <div className="w-[150px]"></div>
-          <div></div>
-        </div>
-      </div>
-      <div className="basicInformation flex md:flex-row justify-between px-6 md:px-16 py-6 border-b-2 ">
-        <div>
-          <h1 className="font-bold md:text-[28px] bg-slate-600 "></h1>
-          <p className="md:text-[16px]"></p>
-        </div>
-        <div>
-          <div className="border-2 rounded text-center p-1">
-            <p className="border-b-2 text-[#3D9B6D] gap-1 flex font-semibold justify-center py-1"></p>
+      <div>
+        <div className="shimmerInfo pt-12 pb-4 px-6 md:px-16 w-screen flex justify-between border-b-2 ">
+          <div className="shimmerLeft flex flex-col gap-2 w-60">
+            <div className="w-40 h-8 bg-red-200 rounded"></div>
+            <div className="w-32 h-6 bg-slate-400 rounded"></div>
+            <div className="w-24 h-6 bg-slate-300 rounded"></div>
+          </div>
+          <div className="border-2 rounded text-center p-1 w-16 h-20">
+            <p className="border-b h-8"></p>
             <p className="pt-1"></p>
           </div>
         </div>
-      </div>
-      <div className="time costForTwo border-b-2 flex justify-between px-6 md:px-16 py-4 gap-20">
-        <p className="md:text-[16px] flex gap-1 items-center"></p>
-        <p className="md:text-[16px]"></p>
+
+        <div className=" w-screen flex justify-between md:px-16 px-6 py-4 border-b-2 ">
+          <div className="w-32 h-8 bg-slate-400 rounded"></div>
+          <div className="w-28 h-8 bg-slate-300 rounded"></div>
+        </div>
+
+        <div className="md:px-14 flex flex-col md:flex-row items-left justify-between border-b-2 py-4">
+          {Array(4)
+            .fill("discountWrapper")
+            .map((element, index) => (
+              <div key={index} className="discountWrapper">
+                <div className="discount px-6 md:px-2 py-3 w-max">
+                  <div className="px-24 py-10 card border-2 rounded"></div>
+                </div>
+              </div>
+            ))}
+        </div>
+        {Array(6)
+          .fill("shimmerMenuItems")
+          .map((element, index) => (
+            <div
+              key={index}
+              className="shimmerMenuItems pt-12 pb-4 px-6 md:px-16 w-screen flex justify-between border-b-2 "
+            >
+              <div className="shimmerLeft flex flex-col gap-2 w-screen">
+                <div className="w-72 h-8 bg-red-200 rounded"></div>
+                <div className="w-20 h-6 bg-slate-400 rounded"></div>
+                <div className="w-44 h-6 bg-slate-300 rounded"></div>
+              </div>
+              <div className="border-4 rounded text-center p-1 w-24 h-24"></div>
+            </div>
+          ))}
       </div>
     </>
   );

@@ -105,24 +105,24 @@ body {
 }
 
 /*Animation to Shimmer Component Card and Menu card Start*/
-.stroke {
-  height: 15px;
-  background: #777;
+
+.shimmerInfo {
+  width: 0px;
+  animation: fullView 0.5s forwards linear;
+  background-color: #7d53cc;
 }
-.stroke-color {
-  background: #777;
-}
-.animate {
-  animation: shimmer 3s;
-  animation-iteration-count: infinite;
-  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
-  background-size: 1000px 100%;
-}
-@keyframes shimmer {
-  from {
+
+@keyframes shimmerInfo {
+  0% {
     background-position: -1000px 0;
   }
-  to {
+  100% {
     background-position: 1000px 0;
   }
+}
+
+.animate {
+  animation: shimmerInfo 2s infinite;
+  background: linear-gradient(to right, #7d53cc 4%, #e2e2e2 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
 }
