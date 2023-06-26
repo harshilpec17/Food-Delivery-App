@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import ShimmerMenuPage from "./ShimmerComponent/ShimmerMenu";
-
+import { ShimmerMenuPage } from "./ShimmerComponent/ShimmerBody";
 import { useParams } from "react-router-dom";
 import { MENU_FOOD_IMAGE, RES_MENU } from "../utils/constant";
 import { FaClock } from "react-icons/fa";
@@ -16,6 +15,11 @@ const menu = () => {
   const { id } = useParams("112620245");
   useEffect(() => {
     fetchMenu();
+  }, []);
+
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
   const fetchMenu = async () => {
