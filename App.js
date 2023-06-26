@@ -4,7 +4,7 @@ import Header from "./src/Component/Header";
 import Body from "./src/Component/Body";
 import AboutUs from "./src/Component/AboutUs";
 import ContactUs from "./src/Component/ContactUs";
-import ShimmerBody from "./src/Component/ShimmerComponent/ShimmerBody";
+import { ShimmerMenuPage } from "./src/Component/ShimmerComponent/ShimmerBody";
 
 import Offers from "./src/Component/Offers";
 import Menu from "./src/Component/Menu";
@@ -40,7 +40,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "offers",
-        element: <ShimmerBody />,
+        element: <ShimmerMenuPage />,
       },
       {
         path: "/menu/:id",
