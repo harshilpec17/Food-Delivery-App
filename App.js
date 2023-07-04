@@ -40,7 +40,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "offers",
-        element: <ShimmerMenuPage />,
+        element: <Offers />,
       },
       {
         path: "/menu/:id",
