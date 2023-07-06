@@ -43,13 +43,6 @@ const Body = () => {
     <div className="shimmerContainer">
       <ShimmerHeader />
       <Shimmer />
-      <Shimmer />
-      <Shimmer />
-      <Shimmer />
-      <Shimmer />
-      <Shimmer />
-      <Shimmer />
-      <Shimmer />
     </div>
   ) : (
     <>

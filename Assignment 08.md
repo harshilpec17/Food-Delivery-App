@@ -151,3 +151,15 @@ class UserClass extends React.Component {
 In the above example, we are updating the `count` state, onclick of the button `Increase`. In the example, `setState` is a method that will update the count value.
 
 - To access any state variable other than `count` inside an object, we can use the `setState` method, and specify the state variable for a change.
+
+## Render phase and Commit phase part of React lifecycle.
+
+- when application is updating, there are two phases that will work.
+
+1. Render phase - where the constructor is called, super is called and, react render the page. once Parent render and child render is finished, it will go to the next phase called commit phase
+
+2. Commit phase - where the `ComponentDidMount` or API is called. and application loads in the browser. However, React will call the API for the first child Component, then goes to second child, if all the child API is called, then react will call the parent API.
+
+---
+
+React will first update the DOM as its expensive for the lifecycle, once DOM is updated by reconciliation. then React will fill the data with of `componentDidmount`. If react calls the data first and then update the DOM it will be very expansive process and it takes time to have a data from the server.

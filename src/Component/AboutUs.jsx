@@ -7,17 +7,14 @@ class AboutUs extends React.Component {
     console.log("Parent constructor");
   }
 
-  componentDidMount() {
-    console.log("Parent DidMount");
-  }
+  // componentDidMount() {}
   render() {
     console.log("parent render");
 
     return (
       <>
         <h1>Hello I am About page</h1>;
-        <UserClass name={"First"} />
-        <UserClass name={"Second"} />
+        <UserClass />
       </>
     );
   }

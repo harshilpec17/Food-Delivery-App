@@ -4,7 +4,6 @@ import Header from "./src/Component/Header";
 import Body from "./src/Component/Body";
 import AboutUs from "./src/Component/AboutUs";
 import ContactUs from "./src/Component/ContactUs";
-
 import Offers from "./src/Component/Offers";
 import Menu from "./src/Component/Menu";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
