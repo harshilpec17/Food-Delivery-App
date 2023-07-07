@@ -19,12 +19,12 @@ class UserClass extends React.Component {
   }
 
   render() {
-    console.log(this.state.userInfo.info);
+    // console.log(this.state.userInfo.info);
     // console.log(this.props.name + "child render called");
 
     return (
       <>
-        {/* <h1>I am {this.state.userInfo.info.seed}</h1> */}
+        <h1>I am {this.state.userInfo.info.seed}</h1>
         {/* <h2>Count: {this.state.count}</h2>
           <button
             onClick={() => {
